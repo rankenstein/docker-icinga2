@@ -27,14 +27,14 @@ function echo_log {
 	echo `$DATE`" $1"
 }
 
-initfile=/opt/icinga2/init.done
+initfile=/var/lib/mysql/icinga2.init.done
 
 # update to latest snapshot packages
-echo_log "Fetching latest icinga* snapshot packages."
-{
-  yum update --enablerepo=icinga-snapshot-builds -y icinga2 icinga2-ido-mysql icingaweb2 icingacli
-  yum clean all
-} &> /dev/null
+#echo_log "Fetching latest icinga* snapshot packages."
+#{
+#  yum update --enablerepo=icinga-snapshot-builds -y icinga2 icinga2-ido-mysql icingaweb2 icingacli
+#  yum clean all
+#} &> /dev/null
 
 echo_log "Validating the icinga2 configuration first."
 if ! icinga2 daemon -C; then
